@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-
+using petclinic.Models;
 namespace petclinic.Data;
 
 public class ApplicationDbContext : IdentityDbContext
@@ -9,4 +9,6 @@ public class ApplicationDbContext : IdentityDbContext
         : base(options)
     {
     }
+
+     public DbSet<Contacto> DataContactos { get; set; }
 }
