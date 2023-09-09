@@ -2,3 +2,4 @@ obj/
 bin/
 
 Data/Migrations/
+appsettings.json
