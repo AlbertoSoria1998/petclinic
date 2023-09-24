@@ -2,12 +2,20 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using petclinic.Data;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
+using System.Diagnostics;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddHealthChecks();
+
 // Add services to the container.
 //var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-var connectionString = builder.Configuration.GetConnectionString("PostgresSQLConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+var connectionString=Environment.GetEnvironmentVariable("RENDER_POSTGRES_CONNECTION");
+if (string.IsNullOrEmpty(connectionString))
+{
+    connectionString = builder.Configuration.GetConnectionString("PostgresSQLConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+}
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     //options.UseSqlite(connectionString));
     options.UseNpgsql(connectionString));
@@ -42,5 +50,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
+
+app.MapHealthChecks("/health");
 
 app.Run();

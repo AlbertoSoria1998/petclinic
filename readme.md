@@ -29,3 +29,12 @@ dotnet tool install -g dotnet-aspnet-codegenerator // poner esto si te sale erro
 dotnet aspnet-codegenerator identity -dc petclinic.Data.ApplicationDbContext --files "Account.Register;Account.Login"
 
 dotnet aspnet-codegenerator identity -dc petclinic.Data.ApplicationDbContext --files "Account.Register;Account.Login"
+
+
+// mi cadena de conexión localmente lo que va en el appsettings.json
+
+"PostgresSQLConnection":"Host=dpg-cjp6jtojbais73fb94dg-a.oregon-postgres.render.com ;Database=petclinic_database_un42;Username=petclinic_database_un42_user;Password=7vHSGANJGOUlOZNzQ4GEsI5FHg1WooL8;Port=5432;SSL Mode=Require;Trust Server Certificate=true"
+
+// comando para agregar el healchetf
+
+dotnet add package AspNetCore.HealthChecks --version 1.0.0 
