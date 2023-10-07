@@ -300,19 +300,26 @@
             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
             <a class="nav-link text-dark" asp-area="" asp-controller="Catalogo" asp-action="Index">Catalogo</a>
             <a class="nav-link text-dark" asp-area="" asp-controller="Contacto" asp-action="Index">Contactame</a>
+
+
         </nav>
 
         <div class="iconosxd">
             @if (SignInManager.IsSignedIn(User))
             {
+
+                <div>
+                    <a class="fas fa-shopping-cart" asp-area="" asp-controller="Carrito" asp-action="Index"></a>
+                </div>
+
                 <div class="nav-item custom-user-info">
                     <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello
                         @User.Identity?.Name!</a>
                 </div>
-                <div >
+                <div>
                     <a class="fas fa-sign-out-alt" asp-area="Identity" asp-page="/Account/Logout"
                         asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"></a>
-                </div> 
+                </div>
             }
             else
             {
