@@ -38,3 +38,12 @@ dotnet aspnet-codegenerator identity -dc petclinic.Data.ApplicationDbContext --f
 // comando para agregar el healchetf
 
 dotnet add package AspNetCore.HealthChecks --version 1.0.0 
+
+
+### CRUD GENERAR UN CRUD
+dotnet aspnet-codegenerator controller -name ProductoController -m Producto -dc petclinic.Data.ApplicationDbContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+
+
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 7.0.11
