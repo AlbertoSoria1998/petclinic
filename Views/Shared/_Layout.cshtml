@@ -300,19 +300,26 @@
             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
             <a class="nav-link text-dark" asp-area="" asp-controller="Catalogo" asp-action="Index">Catalogo</a>
             <a class="nav-link text-dark" asp-area="" asp-controller="Contacto" asp-action="Index">Contactame</a>
+
+
         </nav>
 
         <div class="iconosxd">
             @if (SignInManager.IsSignedIn(User))
             {
+
+                <div>
+                    <a class="fas fa-shopping-cart" asp-area="" asp-controller="Carrito" asp-action="Index"></a>
+                </div>
+
                 <div class="nav-item custom-user-info">
                     <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello
                         @User.Identity?.Name!</a>
                 </div>
-                <div >
+                <div>
                     <a class="fas fa-sign-out-alt" asp-area="Identity" asp-page="/Account/Logout"
                         asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"></a>
-                </div> 
+                </div>
             }
             else
             {
@@ -348,14 +355,14 @@
 
             <div class="box">
                 <h3>Datos De Contacto</h3>
-                <a> <i class="fas fa-phone"></i> +51 927572267 </a>
-                <a> <i class="fas fa-envelope"></i> jesus_soria@gmail.com </a>
+                <a> <i class="fas fa-phone"></i> +51 927 572 267 </a>
+                <a> <i class="fas fa-envelope"></i> jesus_soria@usmp.pe </a>
                 <a> <i class="fas fa-map-marker-alt"></i> Av. Prol. Javier Prado Este 8680, Ate 15494 </a>
             </div>
 
             <div class="box">
                 <h3>Redes</h3>
-                <a href="https://www.facebook.com/fia.usmp"> <i class="fab fa-facebook-f"></i> facebook </a>
+                <a href="https://www.facebook.com/fia.usmp"> <i class="fab fa-facebook-f"></i> Facebook </a>
                 <a href="https://api.whatsapp.com/send?phone=927572267" target="_blank"><i class="fab fa-whatsapp"></i>
                     WhatsApp</a>
                 <br><br>
