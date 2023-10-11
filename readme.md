@@ -47,3 +47,30 @@ dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 
 
 dotnet add package Microsoft.EntityFrameworkCore.Design --version 7.0.11
+
+dotnet aspnet-codegenerator identity -dc petclinic.Data.ApplicationDbContext --files "Account.ForgotPassword;Account.ResetPassword"
+
+dotnet aspnet-codegenerator identity -dc petclinic.Data.ApplicationDbContext --files "Account.Manage.ChangePassword"
+
+dotnet aspnet-codegenerator identity -dc petclinic.Data.ApplicationDbContext --files "Account.Logout"
+
+dotnet aspnet-codegenerator identity -dc petclinic.Data.ApplicationDbContext --files "Account.ResendEmailConfirmation"
+
+dotnet aspnet-codegenerator identity -dc petclinic.Data.ApplicationDbContext --files "Account.ConfirmEmail"
+
+dotnet aspnet-codegenerator identity -dc petclinic.Data.ApplicationDbContext --files "Account.ForgotPasswordConfirmation"
+
+dotnet aspnet-codegenerator identity -dc petclinic.Data.ApplicationDbContext --files "Account.Manage.Index"
+
+dotnet aspnet-codegenerator identity -dc petclinic.Data.ApplicationDbContext --files "Account.Manage.Email"
+
+dotnet aspnet-codegenerator identity -dc petclinic.Data.ApplicationDbContext --files "Account.Manage"
+>> 
+
+dotnet aspnet-codegenerator identity -dc proyecto_inkamanu_net.Data.ApplicationDbContext --files "Account.ConfirmEmail"
+
+>> 
+>> 
+>> 
+>> 
+>> 
