@@ -76,3 +76,23 @@ dotnet aspnet-codegenerator identity -dc petclinic.Data.ApplicationDbContext --f
 >> 
 >> 
 >> 
+
+dotnet add package AspNetCore.HealthChecks --version 1.0.0
+dotnet add package DinkToPdf --version 1.0.8
+dotnet add package EPPlus --version 6.2.9
+dotnet add package FirebaseAuthentication.net --version 3.7.2
+dotnet add package FirebaseStorage.net --version 1.0.3
+dotnet add package FluentValidation --version 11.7.1
+dotnet add package FluentValidation.AspNetCore --version 11.3.0
+dotnet add package itext7 --version 8.0.1
+dotnet add package MailKit --version 4.2.0
+dotnet add package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore --version 7.0.11
+dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore --version 7.0.11
+dotnet add package Microsoft.AspNetCore.Identity.UI --version 7.0.11
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 7.0.11
+dotnet add package Microsoft.EntityFrameworkCore.Tools --version 7.0.11
+dotnet add package Microsoft.Extensions.Http --version 7.0.0
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 7.0.10
+dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL --version 7.0.11
+dotnet add package X.PagedList.Mvc --version 8.0.7
+dotnet add package X.PagedList.Mvc.Core --version 8.4.7
