@@ -69,6 +69,8 @@ dotnet aspnet-codegenerator identity -dc petclinic.Data.ApplicationDbContext --f
 
 dotnet aspnet-codegenerator identity -dc proyecto_inkamanu_net.Data.ApplicationDbContext --files "Account.ConfirmEmail"
 
+dotnet aspnet-codegenerator identity -dc petclinic.Data.ApplicationDbContext --force
+
 >> 
 >> 
 >> 
