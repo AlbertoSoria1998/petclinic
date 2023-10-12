@@ -96,3 +96,9 @@ dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 7.
 dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL --version 7.0.11
 dotnet add package X.PagedList.Mvc --version 8.0.7
 dotnet add package X.PagedList.Mvc.Core --version 8.4.7
+
+para autenticarme con google
+dotnet add package Microsoft.AspNetCore.Authentication.Google
+
+para los cookies bloqueados
+dotnet add package Microsoft.AspNetCore.CookiePolicy
