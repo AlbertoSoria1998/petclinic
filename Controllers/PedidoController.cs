@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+
+using Microsoft.AspNetCore.Identity;
+
 using petclinic.Data;
+using petclinic.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace petclinic.Controllers
 {
@@ -28,7 +31,7 @@ namespace petclinic.Controllers
         public  async Task<IActionResult>  Index()
         {
              var pedidos = from o in _context.DataPedido select o;
-             pedidos = pedidos.Where(s => s.Status.Contains("Pendientes"));
+             pedidos = pedidos.Where(s => s.Status.Contains("PENDIENTE"));
             
             return View(await pedidos.ToListAsync());
         }
