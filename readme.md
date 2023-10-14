@@ -102,3 +102,5 @@ dotnet add package Microsoft.AspNetCore.Authentication.Google
 
 para los cookies bloqueados
 dotnet add package Microsoft.AspNetCore.CookiePolicy
+
+En jesus_petclinic3 el dia 13/10/2023 agregue varios cambios de la clase, agregu roles, lo del pedido controller y el API DE PRODUCTOS
