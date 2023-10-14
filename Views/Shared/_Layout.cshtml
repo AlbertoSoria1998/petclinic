@@ -301,7 +301,7 @@
             <a class="nav-link text-dark" asp-area="" asp-controller="Catalogo" asp-action="Index">Catalogo</a>
             <a class="nav-link text-dark" asp-area="" asp-controller="Contacto" asp-action="Index">Contactame</a>
 
-
+             <partial name="_MenuAdminPartial" />  
         </nav>
 
         <div class="iconosxd">
@@ -309,7 +309,7 @@
             {
 
                 <div>
-                    <a class="fas fa-shopping-cart" asp-area="" asp-controller="Carrito" asp-action="Index"></a>
+                    <a class="fas fa-shopping-cart"  style="text-decoration: none;" asp-area="" asp-controller="Carrito" asp-action="Index"></a>
                 </div>
 
                 <div class="nav-item custom-user-info">
@@ -324,8 +324,8 @@
             else
             {
 
-                <a class="fas fa-user-plus" asp-area="Identity" asp-page="/Account/Register"></a>
-                <a class="fas fa-sign-in-alt" asp-area="Identity" asp-page="/Account/Login"></a>
+                <a class="fas fa-user-plus"  style="text-decoration: none;" asp-area="Identity" asp-page="/Account/Register"></a>
+                <a class="fas fa-sign-in-alt"  style="text-decoration: none;" asp-area="Identity" asp-page="/Account/Login"></a>
             }
         </div>
 
