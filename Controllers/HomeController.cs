@@ -111,6 +111,77 @@ public class HomeController : Controller
         return Json(ventasMensuales);
     }
 
+    [HttpGet]
+    public JsonResult VentasSemanales()
+    {
+        _logger.LogInformation("Iniciando el método VentasSemanales.");
+        var ventasSemanales = new List<object>();
+
+        try
+        {
+            using (var connection = _context.Database.GetDbConnection())
+            {
+                connection.Open();
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = @"
+            SELECT 
+                EXTRACT(YEAR FROM ""PaymentDate"") AS ""Year"",
+                EXTRACT(WEEK FROM ""PaymentDate"") AS ""Week"",
+                SUM(""MontoTotal"") AS ""TotalVentas""
+            FROM 
+                ""t_pago""
+            GROUP BY 
+                EXTRACT(YEAR FROM ""PaymentDate""),
+                EXTRACT(WEEK FROM ""PaymentDate"")
+            ORDER BY 
+                ""Year"", ""Week"";
+            ";
+
+                    _logger.LogInformation("Ejecutando consulta SQL para obtener ventas semanales.");
+
+                    using (var result = command.ExecuteReader())
+                    {
+                        while (result.Read())
+                        {
+                            var year = result.GetInt32(result.GetOrdinal("Year"));
+                            var week = result.GetInt32(result.GetOrdinal("Week"));
+                            var totalVentas = result.GetDecimal(result.GetOrdinal("TotalVentas"));
+
+                            ventasSemanales.Add(new
+                            {
+                                Semana = $"Año {year} - Semana {week}",
+                                TotalVentas = totalVentas
+                            });
+
+                            _logger.LogInformation($"Agregado registro: Año = {year}, Semana = {week}, TotalVentas = {totalVentas}");
+                        }
+                    }
+                }
+
+                connection.Close();
+            }
+
+            _logger.LogInformation($"Se encontraron {ventasSemanales.Count} registros de ventas semanales.");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Error al obtener ventas semanales: {ex.Message}");
+            _logger.LogError(ex.StackTrace);
+            return Json(new { error = "Ocurrió un error al obtener las ventas semanales." });
+        }
+
+        return Json(ventasSemanales);
+    }
+
+
+
+
+
+
+
+
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
