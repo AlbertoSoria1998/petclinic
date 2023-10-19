@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using petclinic.Data;
 using petclinic.Models;
 
+using System.Globalization;
 namespace petclinic.Controllers;
 
 public class HomeController : Controller
@@ -63,6 +64,53 @@ public class HomeController : Controller
 
         return Json(productos);
     }
+
+    [HttpGet]
+    public JsonResult VentasMensuales()
+    {
+        _logger.LogInformation("Iniciando el método VentasMensuales.");
+        var ventasMensuales = new List<dynamic>();
+
+        try
+        {
+            var ventas = _context.DataPago
+                .GroupBy(p => new
+                {
+                    Year = p.PaymentDate.Year,
+                    Month = p.PaymentDate.Month
+                })
+                .Select(g => new
+                {
+                    Year = g.Key.Year,
+                    Month = g.Key.Month,
+                    TotalVentas = g.Sum(p => p.MontoTotal)
+                })
+                .OrderBy(g => g.Year).ThenBy(g => g.Month)
+                .ToList();
+
+            foreach (var venta in ventas)
+            {
+                var mes = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(venta.Month);
+                ventasMensuales.Add(new
+                {
+                    Mes = $"{mes} {venta.Year}",
+                    venta.TotalVentas
+                });
+                _logger.LogInformation($"Agregado registro: Mes = {mes} {venta.Year}, TotalVentas = {venta.TotalVentas}");
+            }
+
+            _logger.LogInformation($"Se encontraron {ventasMensuales.Count} registros de ventas mensuales.");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Error al obtener ventas mensuales: {ex.Message}");
+            _logger.LogError(ex.StackTrace);
+            return Json(new { error = "Ocurrió un error al obtener las ventas mensuales." });
+        }
+
+        return Json(ventasMensuales);
+    }
+
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

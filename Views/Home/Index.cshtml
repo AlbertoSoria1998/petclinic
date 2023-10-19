@@ -35,45 +35,58 @@
         grid-template-columns: 1fr;
         grid-template-rows: auto auto;
         /* Ajusta las filas según sea necesario */
-        height: 100vh;
+
     }
 
     .cards-contadores {
-        padding-top: 50px;
         display: flex;
         align-items: center;
-        padding-bottom: 380px;
-        margin: auto;
-
         flex-wrap: wrap;
         justify-content: space-around;
+        margin-bottom: 50px;
+        /* Ajusta este valor según tus necesidades */
     }
 
 
     .card {
         background-color: #0d0d0e;
-        padding: 20px;
+        padding: 1rem;
+        /* Ajusta el padding */
         border-radius: 8px;
         color: var(--black);
         text-align: center;
-        width: 20%;
-        height: 200px;
+        min-width: 180px;
+        /* Establece un ancho mínimo */
+        max-width: 25%;
+        /* Establece un ancho máximo */
+        /* height: 200px; */
+        /* Comentado para permitir que la altura se ajuste automáticamente */
         display: flex;
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
+        overflow: auto;
+        /* Agrega barras de desplazamiento si es necesario */
     }
 
     .card h3 {
         margin: 0;
-        font-size: 18px;
-        width: 200px;
+        font-size: 1rem;
+        /* Usa unidades relativas */
+        width: 100%;
+        /* Ocupa todo el ancho disponible */
+        overflow-wrap: break-word;
+        /* Rompe palabras largas */
     }
 
     .card .contador {
-        font-size: 50px;
+        font-size: 2rem;
+        /* Usa unidades relativas */
         font-weight: bold;
-        width: 200px;
+        width: 100%;
+        /* Ocupa todo el ancho disponible */
+        overflow-wrap: break-word;
+        /* Rompe palabras largas */
     }
 
     .contenedor-cosas .cards-contadores:first-child {
@@ -109,7 +122,7 @@
 
     /* Estilo CSS para ajustar el tamaño del gráfico */
     .miGraficoDeLineas {
- 
+
         /* Ocupar todas las columnas disponibles */
         text-align: center;
         /* Centrar el contenido */
@@ -138,16 +151,18 @@
 <br><br>
 <!---------------------------- graficos stars  ---------------------------->
 <div class="contenedor-cosas">
-    
+
     <div>
-  
+
         <div class="grafico">
             <div class="miGraficoDeLineas">
                 <canvas id="clientesChart"></canvas>
                 <canvas id="productosChart"></canvas>
+                <canvas id="ventasMensualesChart"></canvas>
+                <canvas id="ventasMensualesLineChart"></canvas>
             </div>
         </div>
-
+        <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
         <div class="cards-contadores">
             <div class="card">
                 <h3>Clientes totales</h3>
@@ -168,45 +183,116 @@
 <!---------------------------- graficos ends  ---------------------------->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    // Gráfico de Clientes
-    fetch('/Home/TotalClientesRegistrados')
-    .then(response => response.json())
-    .then(data => {
-        var ctx = document.getElementById('clientesChart').getContext('2d');
-        var chart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Clientes Registrados'],
-                datasets: [{
-                    label: 'Total de Clientes',
-                    data: [data.totalClientes],
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
-            }
-        });
-    });
+    document.addEventListener("DOMContentLoaded", function () {
+        // Gráfico de Clientes
+        function initClientesChart(data) {
+            var ctx = document.getElementById('clientesChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Clientes Registrados'],
+                    datasets: [{
+                        label: 'Total de Clientes',
+                        data: [data.totalClientes],
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                }
+            });
+        }
 
-    // Gráfico de Productos más vendidos
-    fetch('/Home/ProductosMasVendidos')
-    .then(response => response.json())
-    .then(data => {
-        var ctx = document.getElementById('productosChart').getContext('2d');
-        var nombres = data.map(p => p.nombre);
-        var ventas = data.map(p => p.totalVentas);
-        var chart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: nombres,
-                datasets: [{
-                    label: 'Ventas por Producto',
-                    data: ventas,
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    borderWidth: 1
-                }]
-            }
-        });
+        // Gráfico de Productos más vendidos
+        function initProductosChart(data) {
+            var ctx = document.getElementById('productosChart').getContext('2d');
+            var nombres = data.map(p => p.nombre);
+            var ventas = data.map(p => p.totalVentas);
+            var chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: nombres,
+                    datasets: [{
+                        label: 'Ventas por Producto',
+                        data: ventas,
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }]
+                }
+            });
+        }
+
+        // Gráfico de Ventas Mensuales
+        function initVentasMensualesChart(data) {
+            console.log(data);  // <-- Agrega esta línea
+
+            var ctx = document.getElementById('ventasMensualesChart').getContext('2d');
+            var nombresMes = data.map(d => d.mes);
+            var ventasT = data.map(d => d.totalVentas);
+            var chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: nombresMes,
+                    datasets: [{
+                        label: 'Ventas Mensuales',
+                        data: ventasT,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                }
+            });
+        }
+
+        function initVentasMensualesLineChart(data) {
+            var ctx = document.getElementById('ventasMensualesLineChart').getContext('2d');
+            var nombresMes = data.map(d => d.mes);
+            var ventasT = data.map(d => d.totalVentas);
+            var chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: nombresMes,
+                    datasets: [{
+                        label: 'Ventas Mensuales De Linea De Tiempo',
+                        data: ventasT,
+                        fill: false, // Esto asegura que el área bajo la línea no esté coloreada
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(75, 192, 192, 1)'
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        // Obtener datos y inicializar gráficos
+        fetch('/Home/TotalClientesRegistrados')
+            .then(response => response.json())
+            .then(data => {
+                initClientesChart(data);
+            });
+
+        fetch('/Home/ProductosMasVendidos')
+            .then(response => response.json())
+            .then(data => {
+                initProductosChart(data);
+            });
+
+        fetch('/Home/VentasMensuales')
+            .then(response => response.json())
+            .then(data => {
+                initVentasMensualesChart(data);
+                initVentasMensualesLineChart(data);
+            });
+
     });
 </script>
