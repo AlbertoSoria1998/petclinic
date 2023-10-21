@@ -10,18 +10,19 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using petclinic.Data;
 using petclinic.Models;
-
+using petclinic.Service;
 namespace petclinic.Controllers.Rest
 {
     [ApiController]
     [Route("api/producto")]
+    [ApiVersion("1.0")]
     public class ProductoApiController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ProductoService _productoService;
 
-        public ProductoApiController(ApplicationDbContext context)
+        public ProductoApiController(ProductoService productoService)
         {
-            _context = context;
+            _productoService = productoService;
         }
 
         [HttpGet]
@@ -29,8 +30,8 @@ namespace petclinic.Controllers.Rest
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<List<Producto>>> List()
         {
-            var productos = await _context.DataProductos.ToListAsync();
-            if(productos == null)
+            var productos = await _productoService.GetAll();
+            if (productos == null)
                 return NotFound();
             return Ok(productos);
         }
@@ -38,15 +39,28 @@ namespace petclinic.Controllers.Rest
         [HttpGet("{id}")]
         public async Task<ActionResult<Producto>> GetProducto(int? id)
         {
-            if (id == null || _context.DataProductos == null)
-            {
-                return NotFound();
-            }
-
-            var producto = await _context.DataProductos.FindAsync(id);
-            if(producto == null)
+            var producto = await _productoService.Get(id);
+            if (producto == null)
                 return NotFound();
             return Ok(producto);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Producto>> CreateProducto(Producto producto)
+        {
+            if (producto == null)
+            {
+                return BadRequest();
+            }
+            await _productoService.CreateOrUpdate(producto);
+            return Ok(producto);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteProducto(int? id)
+        {
+            await _productoService.Delete(id);
+            return Ok();
         }
     }
 }
