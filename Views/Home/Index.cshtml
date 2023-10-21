@@ -2,6 +2,41 @@
     ViewData["Title"] = "Home Page";
 }
 <style>
+    @@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+
+    :root {
+        --my-blue: #0074E4;
+        --light-my-blue: #6FA6FF;
+        /* Aquí defines el tono más claro */
+        --yellow: #40E0D0;
+        --light-yellow: hsl(177, 72%, 70%);
+        --amarillo: #f9d806;
+        --light-amarillo: #ffee80;
+        --rojo: #FF0000;
+        --light-rojo: #FFAFAF;
+        --verde: #369681;
+        --light-verde: #00B050;
+        --black: #130f40;
+        --light-color: #666;
+        --border: .1rem solid rgba(0, 0, 0, .1);
+        --box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+        --outline: .1rem solid rgba(0, 0, 0, .1);
+        /* lineas agregadas */
+        --outline-hover: .2rem solid var(--black);
+    }
+
+    * {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
+        border: none;
+        text-decoration: none;
+        text-transform: capitalize;
+        transition: all .2s linear;
+    }
+
     /* PROBANDO EL CODIGO DE YASSER */
 
     .links_admin a {
