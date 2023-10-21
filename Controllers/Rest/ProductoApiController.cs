@@ -15,7 +15,6 @@ namespace petclinic.Controllers.Rest
 {
     [ApiController]
     [Route("api/producto")]
-    [ApiVersion("1.0")]
     public class ProductoApiController : ControllerBase
     {
         private readonly ProductoService _productoService;
