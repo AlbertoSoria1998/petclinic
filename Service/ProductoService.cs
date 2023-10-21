@@ -22,14 +22,27 @@ namespace petclinic.Service
 
         public async Task<Producto> CreateOrUpdate(Producto p)
         {
-            //Regla de Negocio 1
+            // Regla de Negocio 1
             if (p.Precio < 1)
             {
                 throw new SystemException("No se puede ingresar datos con precio menor 1 sol");
             }
-            //Regla de Negocio 2
+            // Regla de Negocio 2
 
-            _context.Add(p);
+            // Verificar si el producto ya existe en la base de datos
+            var existingProducto = await _context.DataProductos.FindAsync(p.Id);
+
+            if (existingProducto != null)
+            {
+                // El producto ya existe, así que actualizamos sus propiedades
+                _context.Entry(existingProducto).CurrentValues.SetValues(p);
+            }
+            else
+            {
+                // El producto no existe, así que lo agregamos
+                _context.DataProductos.Add(p);
+            }
+
             await _context.SaveChangesAsync();
             return p;
         }
