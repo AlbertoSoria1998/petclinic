@@ -108,3 +108,5 @@ En jesus_petclinic3 el dia 13/10/2023 agregue varios cambios de la clase, agregu
 En jesus_petclinic4 el dia 21/10/2023 le puse correctamente el servicio de api rest para productos, tambien agregue graficos de prueba en formato json para mostrar estadisticas de acuerdo a la data que hay en mi base de datos
 
 probando probando xdxd
+
+probando probando rama nueva xd
