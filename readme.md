@@ -1,4 +1,8 @@
-## petclinic
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+</p>
+
+## Proyecto de ejercicio en clase llamado PETCLINIC
 
 dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL --version 7.0.4
 
@@ -110,3 +114,8 @@ En jesus_petclinic4 el dia 21/10/2023 le puse correctamente el servicio de api r
 probando probando xdxd
 
 probando probando rama nueva xd
+
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+</p>
