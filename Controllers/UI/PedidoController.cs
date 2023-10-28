@@ -12,7 +12,7 @@ using petclinic.Data;
 using petclinic.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace petclinic.Controllers
+namespace petclinic.Controllers.UI
 {
     public class PedidoController : Controller
     {

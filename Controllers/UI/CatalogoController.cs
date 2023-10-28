@@ -9,7 +9,7 @@ using petclinic.Data;
 using petclinic.Models;
 
 using Microsoft.AspNetCore.Identity;
-namespace petclinic.Controllers {
+namespace petclinic.Controllers.UI {
 
     public class CatalogoController : Controller {
         private readonly ILogger<CatalogoController> _logger;

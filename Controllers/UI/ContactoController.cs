@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 using petclinic.Models;
 using petclinic.Data;
 
-namespace petclinic.Controllers
+namespace petclinic.Controllers.UI
 {
     public class ContactoController : Controller
     {

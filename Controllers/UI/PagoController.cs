@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 using petclinic.Data;
 using petclinic.Models;
 
-namespace petclinic.Controllers
+namespace petclinic.Controllers.UI
 {
     public class PagoController : Controller
     {

@@ -5,6 +5,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL;
 using System.Diagnostics;
 using petclinic.Models;
 using petclinic.Service;
+using petclinic.Integrations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -61,6 +62,12 @@ builder.Services.AddControllersWithViews();
 
 //Registro mi logica customizada y reuzable
 builder.Services.AddScoped<ProductoService, ProductoService>();
+
+
+// builder.Services.AddScoped<CurrencyExchangeApiIntegration, CurrencyExchangeApiIntegration>();
+
+//Registro de las integraciones para APIS 28/10/2023
+builder.Services.AddScoped<JsonplaceholderAPIIntegration, JsonplaceholderAPIIntegration>();
 
 var app = builder.Build();
 

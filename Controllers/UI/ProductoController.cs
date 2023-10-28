@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using petclinic.Data;
 using petclinic.Models;
 using petclinic.Service;
-namespace petclinic.Controllers
+namespace petclinic.Controllers.UI
 {
     public class ProductoController : Controller
     {

@@ -298,10 +298,10 @@
         <nav class="navbar">
             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            <a class="nav-link text-dark" asp-area="" asp-controller="Catalogo" asp-action="Index">Catalogo</a>
-            <a class="nav-link text-dark" asp-area="" asp-controller="Contacto" asp-action="Index">Contactame</a>
-
-             <partial name="_MenuAdminPartial" />  
+            <a class="nav-link text-dark" asp-area="" asp-controller="Catalogo" asp-action="Index">Catálogo de Productos</a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Contacto" asp-action="Index">Contáctanos</a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Todo" asp-action="Index">Todo</a>
+            <partial name="_MenuAdminPartial" />
         </nav>
 
         <div class="iconosxd">
@@ -309,7 +309,8 @@
             {
 
                 <div>
-                    <a class="fas fa-shopping-cart"  style="text-decoration: none;" asp-area="" asp-controller="Carrito" asp-action="Index"></a>
+                    <a class="fas fa-shopping-cart" style="text-decoration: none;" asp-area="" asp-controller="Carrito"
+                        asp-action="Index"></a>
                 </div>
 
                 <div class="nav-item custom-user-info">
@@ -324,8 +325,10 @@
             else
             {
 
-                <a class="fas fa-user-plus"  style="text-decoration: none;" asp-area="Identity" asp-page="/Account/Register"></a>
-                <a class="fas fa-sign-in-alt"  style="text-decoration: none;" asp-area="Identity" asp-page="/Account/Login"></a>
+                <a class="fas fa-user-plus" style="text-decoration: none;" asp-area="Identity"
+                    asp-page="/Account/Register"></a>
+                <a class="fas fa-sign-in-alt" style="text-decoration: none;" asp-area="Identity"
+                    asp-page="/Account/Login"></a>
             }
         </div>
 
@@ -347,10 +350,10 @@
             <div class="box">
                 <h3>Enlaces Rápidos</h3>
                 <a href="#"> <i class="fas fa-arrow-right"></i> Principal </a>
-                <a href="#"> <i class="fas fa-arrow-right"></i> Productos </a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> Catálogo de Productos </a>
                 <a href="#"> <i class="fas fa-arrow-right"></i> Descripción </a>
                 <a href="#"> <i class="fas fa-arrow-right"></i> Misión y Visión </a>
-                <a href="#"> <i class="fas fa-arrow-right"></i> Contactanos </a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> Contáctanos </a>
             </div>
 
             <div class="box">

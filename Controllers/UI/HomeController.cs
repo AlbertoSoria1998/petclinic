@@ -11,7 +11,7 @@ using petclinic.Data;
 using petclinic.Models;
 
 using System.Globalization;
-namespace petclinic.Controllers;
+namespace petclinic.Controllers.UI;
 
 public class HomeController : Controller
 {
