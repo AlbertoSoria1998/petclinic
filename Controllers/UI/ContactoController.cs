@@ -28,12 +28,14 @@ namespace petclinic.Controllers.UI
         public IActionResult Index() { return View(); }
 
         [HttpPost]
-         public async Task<IActionResult> Create(Contacto objContacto)
+        public async Task<IActionResult> Create(Contacto objContacto)
         {
             _context.Add(objContacto);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
-            ViewData["Message"] = "Estimado " + objContacto.Name + ", te estaremos contactando pronto";
+
+            var message = $"Estimado {objContacto.Name}, te estaremos contactando pronto";
+            TempData["MessageCONTACTO"] = message;
 
             var message1 = $@"
             Estimado(a) {objContacto.Name},
