@@ -118,6 +118,11 @@ probando probando rama nueva xd
 
 dependencia del dia 28/10/2023 dotnet add package Swashbuckle.AspNetCore --version 6.2.3
 
+Con esta linea de codigo puedo darle creditos a un desarrollador
+git add .
+git commit -m "Añadiendo estilo al pdf y excel del controller mis pedidos controller" -m "Co-authored-by: KristellFlores <kristell_flores@usmp.pe>" 
+git push origin nombrerama
+
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
