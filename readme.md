@@ -123,7 +123,7 @@ git add .
 git commit -m "Añadiendo estilo al pdf y excel del controller mis pedidos controller" -m "Co-authored-by: KristellFlores <kristell_flores@usmp.pe>" 
 git push origin nombrerama
 
-## LINK DE LA DOCUMENTYACION DE MI API
+## LINK DE LA DOCUMENTACION DE MI API
 http://localhost:5118/swagger/index.html
 
 Cambios en la rama 13-arreglando-ortografía-xd
