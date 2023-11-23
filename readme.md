@@ -135,6 +135,19 @@ hahaha
 probando xd
 
 
+### INFORMACIÓN DE MI BASE DE DATOS
+
+Name: Pet 1
+Descripcion: Descripcion Pet1
+Precio: 1000
+PorcentajeDescuento: 5
+ImageName:  https://drive.google.com/uc?export=view&id=1rE3ccQdUuUyEpqF5kZiQxt4D-VXYLyJ7 
+Status: Active
+
+Co-authored-by: AlbertoSoria1998 < albertosoriasoria74@gmail.com >
+
+git commit -m "DANDO CREDITOS" -m "Co-authored-by: AlbertoSoria1998 <albertosoriasoria74@gmail.com>"
+
 <p align="center">
   <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 </p>
